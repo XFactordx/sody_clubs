@@ -621,6 +621,17 @@ ESX.RegisterServerCallback('sody_clubs:getTreasurer', function(source, cb, club)
 	cb(hasTreasurer)
 end)
 
+ESX.RegisterServerCallback('sody_clubs:getVP', function(source, cb, club)
+	local hasVP = -1
+	for v,k in pairs(Clubs[club].ranks) do
+		if Clubs[club].ranks[v].club_rank_name == 'vicepresident' then
+			hasVP = v
+		end
+	end
+
+	cb(hasVP)
+end)
+
 RegisterServerEvent('sody_clubs:bankBalance')
 AddEventHandler('sody_clubs:bankBalance', function(club)
 	local _source = source
